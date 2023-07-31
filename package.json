@@ -1,0 +1,51 @@
+{
+  "name": "pkg-name",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.6.10",
+  "description": "",
+  "author": "toryz <zhoutao_233@163.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/zhou-tao/pkg-name#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhou-tao/pkg-name.git"
+  },
+  "bugs": "https://github.com/zhou-tao/pkg-name/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "unbuild --stub",
+    "build": "unbuild",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "pnpm build",
+    "release": "bumpp && npm publish",
+    "start": "esno src/index.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@toryz/eslint-config": "^0.1.2",
+    "bumpp": "^9.1.1",
+    "eslint": "^8.46.0",
+    "lint-staged": "^13.2.3",
+    "simple-git-hooks": "^2.9.0",
+    "typescript": "^5.1.6",
+    "unbuild": "^1.2.1",
+    "vite": "^4.4.7",
+    "vitest": "^0.33.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
