@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-describe('add function: 1 + 2 = 3', () => {
+describe('test case', () => {
   it('exported', () => {
     expect(1).toEqual(1)
   })

@@ -1,19 +1,30 @@
 {
-  "name": "pkg-name",
+  "name": "ts-starter",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@8.6.10",
   "description": "",
   "author": "toryz <zhoutao_233@163.com>",
   "license": "MIT",
-  "homepage": "https://github.com/zhou-tao/pkg-name#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://github.com/zhou-tao/ts-starter#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhou-tao/pkg-name.git"
+    "url": "git+https://github.com/zhou-tao/ts-starter.git"
   },
-  "bugs": "https://github.com/zhou-tao/pkg-name/issues",
+  "bugs": "https://github.com/zhou-tao/ts-starter/issues",
   "keywords": [],
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -29,11 +40,14 @@
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "postinstall": "simple-git-hooks"
   },
   "devDependencies": {
     "@toryz/eslint-config": "^0.1.2",
+    "@types/node": "^20.4.5",
     "bumpp": "^9.1.1",
+    "chalk": "^5.3.0",
     "eslint": "^8.46.0",
     "lint-staged": "^13.2.3",
     "simple-git-hooks": "^2.9.0",
@@ -43,7 +57,8 @@
     "vitest": "^0.33.0"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "node scripts/verifyCommit.js"
   },
   "lint-staged": {
     "*": "eslint --fix"
