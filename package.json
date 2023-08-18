@@ -40,8 +40,7 @@
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
-    "typecheck": "tsc --noEmit",
-    "postinstall": "simple-git-hooks"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@toryz/eslint-config": "^0.1.2",
